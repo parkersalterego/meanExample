@@ -36,16 +36,16 @@ app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // db conncection
-// mongoose.connect(process.env.DATABASE);
+mongoose.connect(process.env.DATABASE);
 
-// mongoose.connection.on('connected', (req, res, next) => {
-//       console.log('Connected to database ' + process.env.DATABASE);
-// });
+mongoose.connection.on('connected', (req, res, next) => {
+      console.log('Connected to database ' + process.env.DATABASE);
+});
 
-// mongoose.connection.on('error', (err, next) => {
-//       console.log('Error connecting to database ' + err);
-//       next(err);
-// });
+mongoose.connection.on('error', (err, next) => {
+      console.log('Error connecting to database ' + err);
+      next(err);
+});
 
 // set route prefixes 
 app.use('/api', controllers);
