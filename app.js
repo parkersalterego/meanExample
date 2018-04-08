@@ -17,6 +17,7 @@ app.set('host', process.env.HOST || '0.0.0.0');
 app.set('port', process.env.PORT || 8080);
 
 // routes 
+const controllers = require('./controllers/controllers');
 
 app.use(logger('common', {
       stream: fs.createWriteStream('./access.log', {
@@ -47,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // });
 
 // set route prefixes 
+app.use('/api', controllers);
 
 // index route 
 app.get('/', (req, res, next) => {
