@@ -30,7 +30,6 @@ const AbilitiesSchema = new mongoose.Schema({
         default: 0
     }
 });
-
 const ChampionSchema = new mongoose.Schema({
     name: {
         type: String,
